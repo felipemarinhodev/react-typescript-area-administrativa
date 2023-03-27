@@ -1,5 +1,26 @@
-import { Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from "@mui/material";
+import { Paper, Table, TableBody, TableCell, tableCellClasses, TableContainer, TableHead, TableRow } from "@mui/material";
+import styled from "styled-components";
 import { IConsulta } from "../../types/IConsulta";
+
+const CelulaEstilizada = styled(TableCell)(() => ({
+  [`&.${tableCellClasses.head}`]: {
+    color: "var(--azul-escuro)",
+    fontSize: 18,
+    fontWeight: 700,
+    fontFamily: "var(--fonte-principal)"
+  },
+  [`&.${tableCellClasses.body}`]: {
+    fontSize: 16,
+    fontFamily: "var(--fonte-principal)"
+  }
+}))
+
+const LinhaEstilizada = styled(TableRow)(() => ({
+  [`&:nth-of-type(odd)`]: {
+    backgroundColor: "var(--cinza-claro)",
+    align: "right"
+  }
+}))
 
 export function Tabela({ consultas }: { consultas: IConsulta[] | null }) {
   return (
@@ -8,25 +29,25 @@ export function Tabela({ consultas }: { consultas: IConsulta[] | null }) {
         <Table sx={{ minWidth: 700 }} aria-label="tabela-customizada">
           <TableHead>
             <TableRow>
-              <TableCell >Data</TableCell>
-              <TableCell >Horário</TableCell>
-              <TableCell >Profissional</TableCell>
-              <TableCell >Especialidade</TableCell>
-              <TableCell >Paciente</TableCell>
-              <TableCell >Modalidade</TableCell>
+              <CelulaEstilizada >Data</CelulaEstilizada>
+              <CelulaEstilizada >Horário</CelulaEstilizada>
+              <CelulaEstilizada >Profissional</CelulaEstilizada>
+              <CelulaEstilizada >Especialidade</CelulaEstilizada>
+              <CelulaEstilizada >Paciente</CelulaEstilizada>
+              <CelulaEstilizada >Modalidade</CelulaEstilizada>
             </TableRow>
           </TableHead>
           <TableBody>
             {consultas?.map((item) => (
 
-              <TableRow key={item.id}>
-                <TableCell component="th" scope="row">{item.data}</TableCell>
-                <TableCell>{item.horario}</TableCell>
-                <TableCell>{item.profissional[0].nome}</TableCell>
-                <TableCell>{item.profissional[0].especialidade}</TableCell>
-                <TableCell>{item.paciente}</TableCell>
-                <TableCell>{item.modalidade}</TableCell>
-              </TableRow>
+              <LinhaEstilizada key={item.id}>
+                <CelulaEstilizada component="th" scope="row">{new Date(item.data).toLocaleDateString()}</CelulaEstilizada>
+                <CelulaEstilizada>{item.horario}</CelulaEstilizada>
+                <CelulaEstilizada>{item.profissional[0].nome}</CelulaEstilizada>
+                <CelulaEstilizada>{item.profissional[0].especialidade}</CelulaEstilizada>
+                <CelulaEstilizada>{item.paciente}</CelulaEstilizada>
+                <CelulaEstilizada>{item.modalidade}</CelulaEstilizada>
+              </LinhaEstilizada>
             ))}
           </TableBody>
         </Table>
