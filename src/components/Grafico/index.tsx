@@ -5,8 +5,15 @@ import {
   XAxis,
   YAxis
 } from "recharts";
+import { IConsulta } from "../../types/IConsulta";
+import { IProfissional } from "../../types/IProfissional";
 
-export function Grafico() {
+interface GraficoProps {
+  profissionais: IProfissional[] | null
+  consultas: IConsulta[] | null
+}
+
+export function Grafico({ consultas, profissionais }: GraficoProps) {
 
   return (
     <ResponsiveContainer width="100%" height={350}>
