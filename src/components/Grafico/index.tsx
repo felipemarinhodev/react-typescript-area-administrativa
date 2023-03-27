@@ -7,6 +7,7 @@ import {
 } from "recharts";
 import { IConsulta } from "../../types/IConsulta";
 import { IProfissional } from "../../types/IProfissional";
+import { useDadosGrafico } from "./useDadosGrafico";
 
 interface GraficoProps {
   profissionais: IProfissional[] | null
@@ -14,6 +15,8 @@ interface GraficoProps {
 }
 
 export function Grafico({ consultas, profissionais }: GraficoProps) {
+
+  const dados = useDadosGrafico({ consultas, profissionais })
 
   return (
     <ResponsiveContainer width="100%" height={350}>
