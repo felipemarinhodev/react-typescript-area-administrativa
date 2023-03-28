@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { IProfissional } from "../../types/IProfissional";
+import { Botao } from "../Botao";
 import { Card } from "./Card";
 
 interface AvaliacaoProps {
@@ -15,10 +16,13 @@ const SecaoCardEstilizado = styled.section`
 
 export function Avaliacao({ profissionais }: AvaliacaoProps) {
   return (
-    <SecaoCardEstilizado>
-      {profissionais?.map(profissional => (
-        <Card profissional={profissional} />
-      ))}
-    </SecaoCardEstilizado>
+    <>
+      <SecaoCardEstilizado>
+        {profissionais?.map(profissional => (
+          <Card profissional={profissional} key={profissional.id} />
+        ))}
+      </SecaoCardEstilizado>
+      <Botao>Ver Mais</Botao>
+    </>
   );
 }

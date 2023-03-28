@@ -23,7 +23,5 @@ export const useDadosGrafico = ({profissionais , consultas }: Props) => {
           .length
     }))
   }
-console.log('DADOS', dados);
-
   return dados
 }

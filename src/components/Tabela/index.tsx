@@ -1,6 +1,8 @@
 import { Paper, Table, TableBody, TableCell, tableCellClasses, TableContainer, TableHead, TableRow } from "@mui/material";
 import styled from "styled-components";
 import { IConsulta } from "../../types/IConsulta";
+import { Botao } from "../Botao";
+import { Titulo } from "../Titulo";
 
 const CelulaEstilizada = styled(TableCell)(() => ({
   [`&.${tableCellClasses.head}`]: {
@@ -25,6 +27,7 @@ const LinhaEstilizada = styled(TableRow)(() => ({
 export function Tabela({ consultas }: { consultas: IConsulta[] | null }) {
   return (
     <>
+      <Titulo image='consulta'>Consultas do dia</Titulo>
       <TableContainer component={Paper}>
         <Table sx={{ minWidth: 700 }} aria-label="tabela-customizada">
           <TableHead>
@@ -52,6 +55,7 @@ export function Tabela({ consultas }: { consultas: IConsulta[] | null }) {
           </TableBody>
         </Table>
       </TableContainer>
+      <Botao>Ver mais</Botao>
     </>
   );
 }

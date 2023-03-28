@@ -33,7 +33,7 @@ export function Grafico({ consultas, profissionais }: GraficoProps) {
           margin={{ top: 25, right: 40, left: 40, bottom: 20 }}
         >
           <XAxis type="number"></XAxis>
-          <YAxis type="category"></YAxis>
+          <YAxis type="category" dataKey="nome"></YAxis>
           <Bar dataKey="consultas" fill="#083860" barSize={30}></Bar>
         </BarChart>
       </ResponsiveContainer>
